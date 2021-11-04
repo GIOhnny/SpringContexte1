@@ -1,8 +1,11 @@
 package main;
 
+import beans.Cat;
+import beans.Owner;
 import config.ProjectConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import services.ProductDeliveryService;
+
+import java.net.CacheRequest;
 
 public class main {
     /**
@@ -14,8 +17,12 @@ public class main {
         try (var context =
                      new AnnotationConfigApplicationContext(ProjectConfig.class)) {
 
-            ProductDeliveryService service = context.getBean(ProductDeliveryService.class);
-            service.addSomeProducts();
+            Cat x = context.getBean(Cat.class);
+            Owner o = context.getBean(Owner.class);
+
+            x.setName("Leo");
+            System.out.println(x);
+            System.out.println(o);
         }
     }
 }
